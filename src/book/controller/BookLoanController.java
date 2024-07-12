@@ -22,6 +22,7 @@ public class BookLoanController {
 	
 	// insertBookLoan 책 대출
 	public void insertBookLoan(Loan loan) {
+		
 		String bookTitle = loan.getLoanBook();
 		Book book = service.getBookTitle(bookTitle); 
 		

@@ -40,21 +40,21 @@ public class StartView {
 		System.out.println("\n*** 02. 모든 책 검색 ***");
 		controller.getBookAllList();
 		
-		System.out.println("\n*** 03. 책 이름 '어린 왕자' Book 검색");
+		System.out.println("\n*** 03. 책 이름 '어린 왕자' Book 검색 ***");
 		controller.getBookTitle("어린 왕자");
 		
-		System.out.println("\n*** 04. 대출 내역 추가");
+		System.out.println("\n*** 04. 대출 내역 추가 ***");
 		controller.insertBookLoan(loan1);
 		controller.insertBookLoan(loan2);
 		
-		System.out.println("\n*** 05. '이정욱' 이름으로 도서 대출 내역 조회");
+		System.out.println("\n*** 05. '이정욱' 이름으로 도서 대출 내역 조회 ***");
 		controller.getUserHistory("이정욱"); 
 		
-		System.out.println("\n*** 06. 책 대출 연장");
+		System.out.println("\n*** 06. 책 대출 연장 ***");
 		controller.updateBookLoan(1, loan1); // 연장 성공
 		controller.updateBookLoan(2, loan2); // 연장 실패
 		
-		System.out.println("\n*** 07. 책 대출 반납");
+		System.out.println("\n*** 07. 책 대출 반납 ***");
 		controller.deleteBookLoan(loan1);
 	}
 

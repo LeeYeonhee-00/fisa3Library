@@ -89,8 +89,9 @@ public class BookLoanService {
 	 */
 	public void updateBookLoan(int index, Loan loan) throws Exception {
 		int count = loan.getLoanCount();
-		loan.setLoanCount(count++); 
-		loanList.set(index, loan);
+		loan.setLoanCount(++count); 
+		loanList.set(index-1, loan);
+		// System.out.println(loanList.get(index-1).getLoanCount());
 	}
 
 	/*

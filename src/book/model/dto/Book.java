@@ -16,6 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
+// @ToString
 public class Book {
 	private String title;
 	private String author;
