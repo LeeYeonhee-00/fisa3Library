@@ -13,6 +13,9 @@ BookLoanController
 - insertBook 책 데이터 추가 -> 공통
 - deleteBookLoan 책 반납
 
+![image](https://github.com/user-attachments/assets/2b0575a6-00ad-4340-b262-ae89ab42683c)
+
+
 ### book.model.dto
 Book 도서
 - title 제목
@@ -38,3 +41,5 @@ BookLoanService
 - insertBookLoan 책 대출
 - deleteBookLoan 책 반납
 - insertBook 책 데이터 추가
+
+![image](https://github.com/user-attachments/assets/ce6212c3-db60-4847-82cc-19ff66ef73aa)
