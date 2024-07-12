@@ -23,11 +23,7 @@ public class BookLoanController {
 	// insertBookLoan 책 대출
 	public void insertBookLoan(Loan loan) {
 		
-		String bookTitle = loan.getLoanBook();
-		Book book = service.getBookTitle(bookTitle); 
-		
-		// 책 재고 있으면 대출 가능
-		if (book != null && book.getCount()>0) {
+		if (loan != null) {
 			try {
 				service.insertBookLoan(loan);
 				EndView.successMessage("대출에 성공했습니다.");
@@ -69,6 +65,7 @@ public class BookLoanController {
 	// getBookTitle 책 이름으로 검색 호출
 	public void getBookTitle(String bookTitle) {
 		
+		// 여기서 book 객체 존재 여부 확인해도 될지?
 		Book b = service.getBookTitle(bookTitle);
 		if (b != null) {
 			EndView.bookView(b);
@@ -81,6 +78,7 @@ public class BookLoanController {
 	// getUserHistory 고객 내역 검색 (사용자 이름으로 도서 대출 내역 조회)
 	public void getUserHistory(String loanPerson) {
 		
+		// 여기서 loan 객체 존재 여부 확인해도 될지?
 		ArrayList<Loan> loanList = service.getUserHistory(loanPerson);
 		if (loanList != null) {
 			EndView.bookLoanView(loanList);
@@ -92,10 +90,8 @@ public class BookLoanController {
 	
 	// updateBookLoan 대출 연장
 	public void updateBookLoan(int index, Loan loan) {
-		int loanCount = loan.getLoanCount();
-		
-		// 1번만 연장 가능
-		if (loan != null && loanCount < 1) {
+
+		if (loan != null) {
 			try {
 				service.updateBookLoan(index, loan);
 				EndView.successMessage("연장에 성공했습니다.");

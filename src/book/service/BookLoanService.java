@@ -41,8 +41,12 @@ public class BookLoanService {
 	 */
 	public void insertBookLoan(Loan loan) throws Exception {
 		
-		// 대출 내역 확인 생략~
-		loanList.add(loan);
+		// 책 재고 있으면 대출 가능
+		String bookTitle = loan.getLoanBook();
+		Book book = getBookTitle(bookTitle); 
+		if (book.getCount()>0) {
+			loanList.add(loan);
+		}
 	}
 	
 	/*
@@ -88,17 +92,23 @@ public class BookLoanService {
 	 * return - void
 	 */
 	public void updateBookLoan(int index, Loan loan) throws Exception {
+		
 		int count = loan.getLoanCount();
-		//loan.setLoanCount(++count); 
-		//loanList.set(index-1, loan);
-		loanList.get(index-1).setLoanCount(++count); // 실제 loan 객체 수정
-		// System.out.println(loanList.get(index-1).getLoanCount());
+
+		// 1번만 연장 가능
+		if (count < 1) {
+		
+			//loan.setLoanCount(++count); 
+			//loanList.set(index-1, loan);
+			loanList.get(index-1).setLoanCount(++count); // 실제 loan 객체 수정
+			// System.out.println(loanList.get(index-1).getLoanCount()); 
+		}
 	}
 
 	/*
 	 * deleteBookLoan 책 반납
 	 * parameter - Loan loan
-	 * return - void
+	 * return - boolean
 	 */
 	public boolean deleteBookLoan(Loan loan) {
 		
