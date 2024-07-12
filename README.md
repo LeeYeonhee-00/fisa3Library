@@ -1,7 +1,8 @@
 # Fisa3 mini project
 
 ## 도서 대출 서비스
-## 이정욱, 이정민, 이유나, 이연희
+
+이정욱, 이정민, 이유나, 이연희
 
 ### book.controller
 BookLoanController
