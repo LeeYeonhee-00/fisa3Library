@@ -25,9 +25,9 @@ public class Loan {
 		StringBuilder builder = new StringBuilder();
 		builder.append("대출 횟수 : ");
 		builder.append(loanCount);
-		builder.append("도서명 : ");
+		builder.append(", 도서명 : ");
 		builder.append(loanBook);
-		builder.append("고객명 : ");
+		builder.append(", 고객명 : ");
 		builder.append(loanPerson);
 		return builder.toString();
 	}

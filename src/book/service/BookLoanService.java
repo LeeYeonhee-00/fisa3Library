@@ -66,6 +66,23 @@ public class BookLoanService {
 	}
 	
 	/*
+	 * getUserHistory 고객 내역 검색
+	 * parameter - String loanPerson
+	 * return - ArrayList<Loan>
+	 */
+	public ArrayList<Loan> getUserHistory(String loanPerson) {
+		
+		ArrayList<Loan> loans = new ArrayList<Loan> ();
+		
+		for (Loan loan : loanList) {
+			if (loan != null && loan.getLoanPerson().equals(loanPerson)) {
+				loans.add(loan);
+			}
+		}
+		return loans;
+	}
+	
+	/*
 	 * updateBookLoan 대출 연장
 	 * parameter - Loan loan
 	 * return - void
@@ -76,4 +93,21 @@ public class BookLoanService {
 		loanList.set(index, loan);
 	}
 
+	/*
+	 * deleteBookLoan 책 반납
+	 * parameter - Loan loan
+	 * return - void
+	 */
+	public boolean deleteBookLoan(Loan loan) {
+		
+		for (Loan l : loanList) {
+			if (l != null && l.getLoanBook().equals(loan.getLoanBook())) {
+				loanList.remove(loan);				
+				return true;
+			}
+		}
+		return false;
+		
+	}
+	
 }

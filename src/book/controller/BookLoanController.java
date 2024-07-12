@@ -29,14 +29,14 @@ public class BookLoanController {
 		if (book != null && book.getCount()>0) {
 			try {
 				service.insertBookLoan(loan);
-				EndView.successMessage("대출에 성공했습니다");
+				EndView.successMessage("대출에 성공했습니다.");
 			}
 			catch (Exception e) {
 				FailView.failViewMessage(e.getMessage()); //실패인 경우 예외로 end user 서비스
 				e.printStackTrace();
 			}
 		} else {
-			FailView.failViewMessage("재고가 없습니다");
+			FailView.failViewMessage("재고가 없습니다.");
 		}
 		
 	}
@@ -77,6 +77,18 @@ public class BookLoanController {
 		}
 	}
 	
+	// getUserHistory 고객 내역 검색 (사용자 이름으로 도서 대출 내역 조회)
+	public void getUserHistory(String loanPerson) {
+		
+		ArrayList<Loan> loanList = service.getUserHistory(loanPerson);
+		if (loanList != null) {
+			EndView.bookLoanView(loanList);
+		} else {
+			FailView.failViewMessage("대출 내역이 없습니다.");
+		}
+		
+	}
+	
 	// updateBookLoan 대출 연장
 	public void updateBookLoan(int index, Loan loan) {
 		int loanCount = loan.getLoanCount();
@@ -85,15 +97,28 @@ public class BookLoanController {
 		if (loan != null && loanCount < 1) {
 			try {
 				service.updateBookLoan(index, loan);
-				EndView.successMessage("연장에 성공했습니다");
+				EndView.successMessage("연장에 성공했습니다.");
 			}
 			catch (Exception e) {
 				FailView.failViewMessage(e.getMessage()); //실패인 경우 예외로 end user 서비스
 				e.printStackTrace();
 			}
 		} else {
-			FailView.failViewMessage("더이상 연장이 불가능 합니다");
+			FailView.failViewMessage("더 이상 연장이 불가능 합니다.");
 		}
+	}
+	
+	// deleteBookLoan 책 반납
+	public void deleteBookLoan(Loan loan) {
+		
+		boolean result = service.deleteBookLoan(loan);
+		
+		if (result) {
+			EndView.successMessage("반납에 성공했습니다.");
+		} else {
+			FailView.failViewMessage("반납에 실패했습니다.");
+		}
+		
 	}
 
 }
