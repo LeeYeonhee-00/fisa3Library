@@ -33,7 +33,7 @@ public class BookLoanController {
 				e.printStackTrace();
 			}
 		} else {
-			FailView.failViewMessage("다시 입력하세요");
+			FailView.failViewMessage("다시 입력해주세요.");
 		}
 		
 	}
@@ -43,14 +43,8 @@ public class BookLoanController {
 		String bookName = book.getTitle(); 
 		
 		if (book != null && bookName.length() != 0) {
-			try {
-				service.insertBook(book);
-				EndView.successMessage("책 정보 등록 성공했습니다.");
-			}
-			catch (Exception e) {
-				FailView.failViewMessage(e.getMessage()); //실패인 경우 예외로 end user 서비스
-				e.printStackTrace();
-			}
+			service.insertBook(book);
+			EndView.successMessage("책 정보 등록 성공했습니다.");
 		} else {
 			FailView.failViewMessage("다시 입력해주세요.");
 		}
@@ -69,7 +63,6 @@ public class BookLoanController {
 		Book b = service.getBookTitle(bookTitle);
 		if (b != null) {
 			EndView.bookView(b);
-			
 		} else {
 			FailView.failViewMessage("해당하는 책이 없습니다.");
 		}
@@ -101,16 +94,15 @@ public class BookLoanController {
 				e.printStackTrace();
 			}
 		} else {
-			FailView.failViewMessage("더 이상 연장이 불가능 합니다.");
+			FailView.failViewMessage("다시 입력해주세요.");
 		}
 	}
 	
 	// deleteBookLoan 책 반납
 	public void deleteBookLoan(Loan loan) {
 		
-		boolean result = service.deleteBookLoan(loan);
-		
-		if (result) {
+		if (loan != null) {
+			service.deleteBookLoan(loan);
 			EndView.successMessage("반납에 성공했습니다.");
 		} else {
 			FailView.failViewMessage("반납에 실패했습니다.");

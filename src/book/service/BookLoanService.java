@@ -97,7 +97,6 @@ public class BookLoanService {
 
 		// 1번만 연장 가능
 		if (count < 1) {
-		
 			//loan.setLoanCount(++count); 
 			//loanList.set(index-1, loan);
 //			loanList.get(index-1).setLoanCount(++count); // 실제 loan 객체 수정
@@ -111,15 +110,14 @@ public class BookLoanService {
 	 * parameter - Loan loan
 	 * return - boolean
 	 */
-	public boolean deleteBookLoan(Loan loan) {
+	public void deleteBookLoan(Loan loan) {
 		
+		// 대출 내역 존재 여부 확인 생략~
 		for (Loan l : loanList) {
 			if (l != null && l.getLoanBook().equals(loan.getLoanBook())) {
 				loanList.remove(loan);				
-				return true;
 			}
 		}
-		return false;
 		
 	}
 	
