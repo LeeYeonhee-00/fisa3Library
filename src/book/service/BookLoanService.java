@@ -46,7 +46,7 @@ public class BookLoanService {
 		Book book = getBookTitle(bookTitle); 
 		if (book.getCount()>0) {
 			loanList.add(loan);
-		}
+		} else throw new Exception("재고가 없습니다.");
 	}
 	
 	/*
@@ -54,7 +54,7 @@ public class BookLoanService {
 	 * parameter - String bookTitle, String userName
 	 * return - void
 	 */
-	public void insertBook(Book book) throws Exception {
+	public void insertBook(Book book) {
 		
 		// 책 존재 여부 확인 생략~
 		bookList.add(book);
@@ -100,9 +100,10 @@ public class BookLoanService {
 		
 			//loan.setLoanCount(++count); 
 			//loanList.set(index-1, loan);
-			loanList.get(index-1).setLoanCount(++count); // 실제 loan 객체 수정
+//			loanList.get(index-1).setLoanCount(++count); // 실제 loan 객체 수정
+			loan.setLoanCount(++count); // 실제 loan 객체 수정
 			// System.out.println(loanList.get(index-1).getLoanCount()); 
-		}
+		} else throw new Exception("더 이상 연장이 불가능 합니다.");
 	}
 
 	/*

@@ -28,19 +28,19 @@ public class BookLoanController {
 				service.insertBookLoan(loan);
 				EndView.successMessage("대출에 성공했습니다.");
 			}
-			catch (Exception e) {
+			catch (Exception e) { // 재고가 없습니다.
 				FailView.failViewMessage(e.getMessage()); //실패인 경우 예외로 end user 서비스
 				e.printStackTrace();
 			}
 		} else {
-			FailView.failViewMessage("재고가 없습니다.");
+			FailView.failViewMessage("다시 입력하세요");
 		}
 		
 	}
 	
 	// insertBook 책 데이터 추가
 	public void insertBook(Book book) {
-		String bookName = book.getTitle();
+		String bookName = book.getTitle(); 
 		
 		if (book != null && bookName.length() != 0) {
 			try {
