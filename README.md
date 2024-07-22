@@ -44,3 +44,7 @@ BookLoanService
 - insertBook 책 데이터 추가
 
 ![image](https://github.com/user-attachments/assets/ce6212c3-db60-4847-82cc-19ff66ef73aa)
+
+### 참고
+.gitignore 파일을 추가하지 않아서 팀원들과 target 폴더 충돌나는 경우 발생
+-> maven.gitignore 리스트를 추가하자..!
